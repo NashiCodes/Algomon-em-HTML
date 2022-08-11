@@ -1,18 +1,15 @@
-import mapa from "./mapa";
+import mapa from "./mapa.js";
 
-function structAlgomon (nome, vida, atk, tipo){
+function criaAlgomon (nome, vida, atk, tipo){
     this.nome = nome;
     this.vida = vida;
     this.atk = atk;
     this.tipo = tipo;
 }
 
-function structPlayer (algm, Pname, line, column, algdex, insg){
-    this.algm = algm;
-    this.Pname = Pname;
-    this.line = line;
-    this.column = column;
+function criaPlayer (algm, Pname, algdex, insg){
+    this.algm =  new criaAlgomon();
+    this.nome = nome;
     this.algdex = algdex;
     this.insg = insg;
 }
-
