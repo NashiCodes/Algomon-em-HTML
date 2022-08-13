@@ -18,8 +18,12 @@
   width: 20px;
 }
 
+.player{
+  background-color: red;
+}
+
 .parede{
-  background-color: black;
+  background-color: green;
 }
 
 .ginasio{
@@ -27,5 +31,5 @@
 }
 
 .cap{
-  background-color: green;
+  background-color: purple;
 }
