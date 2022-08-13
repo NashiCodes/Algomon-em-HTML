@@ -1,6 +1,7 @@
 import mapa from "./mapa.js";
 
 let box = document.querySelector('#box');
+let algcont = document.querySelector('#algmns');
 
 const L = 11;
 const C = 41;
