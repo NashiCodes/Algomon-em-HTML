@@ -2,11 +2,11 @@ import layout from "./mapa.js";
 let box = document.querySelector("#box");
 let algcont = document.querySelector("#algmns");
 
-const L = 11;
-const C = 41;
+const width = 58;
+const height = 19;
 
 let gId = 0;
-let playerIndex = 340;
+let playerIndex = 422;
 
 layout.className = "map";
 layout.id = "mId";
@@ -57,6 +57,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  criaMapa();
+
+  divs[playerIndex].classList.add("player");
+
   function movement(e) {
     divs[playerIndex].classList.remove("player");
 
@@ -65,37 +69,38 @@ document.addEventListener("DOMContentLoaded", () => {
         if (
           playerIndex % width !== 0 &&
           !divs[playerIndex - 1].classList.contains("parede")
-        ) {
-          playerIndex--;
-          break;
-        }
+        )
+          playerIndex -= 1;
+        break;
+
       case "w":
         if (
           playerIndex - width >= 0 &&
-          !divs[playerIndex - 1].classList.contains("parede")
-        ) {
-          playerIndex--;
-          break;
-        }
+          !divs[playerIndex - width].classList.contains("parede")
+        )
+          playerIndex -= width;
+        break;
+
       case "d":
         if (
           playerIndex % width < width - 1 &&
-          !divs[playerIndex - 1].classList.contains("parede")
-        ) {
-          playerIndex++;
-          break;
-        }
+          !divs[playerIndex + 1].classList.contains("parede")
+        )
+          playerIndex += 1;
+        break;
+
       case "s":
         if (
-          playerIndex + width < width * width &&
-          !divs[playerIndex - 1].classList.contains("parede")
-        ) {
-          playerIndex++;
-          break;
-        }
+          playerIndex + width < width * height &&
+          !divs[playerIndex + width].classList.contains("parede")
+        )
+          playerIndex += width;
+        break;
     }
+    divs[playerIndex].classList.add("player");
   }
 
-  criaMapa();
-  console.log(playerIndex);
+  for (let i = 0; i < layout.length; i++) {
+    if (layout[i] == 6) console.log(i);
+  }
 });
