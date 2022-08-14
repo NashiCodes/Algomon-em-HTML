@@ -86,6 +86,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+
   criaMapa();
+  for (let i = 0; i < layout.length; i++) {
+    if (layout[i] == 6) console.log(i);
+  }
+
+  function verifyCity(){
+    if(divs[playerIndex - 1].classList.contains("cap")
+     || divs[playerIndex + width].classList.contains("cap") 
+     || divs[playerIndex + 1].classList.contains("cap")
+     || divs[playerIndex - width].classList.contains("cap")
+     ){
+      recebeAlgomon();
+    }
+  }
+  
+  function recebeAlgomon(){
+    
+  }
 });
 
