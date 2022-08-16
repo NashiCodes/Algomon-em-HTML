@@ -6,29 +6,39 @@ const width = 58;
 const height = 19;
 
 let gId = 0;
-let playerIndex = 422;
+let capId = 0;
+
+function criaAlgomon(nome, vida, atk, tipo) {
+  this.nome = nome;
+  this.vida = vida;
+  this.atk = atk;
+  this.tipo = tipo;
+  return this;
+}
+
+function criaPlayer(algm, Pname, algdex, insg, index) {
+  this.algm = [new criaAlgomon()];
+  this.Pname = Pname;
+  this.algdex = algdex;
+  this.insg = insg;
+  this.Index = index;
+  return this;
+}
 
 layout.className = "map";
 layout.id = "mId";
+
+//Construção do Player//
+let player = new criaPlayer();
+player.Index = 422;
+player.algdex = 3;
+
+player.algm[0].nome = "Ifsauro";
 
 document.addEventListener("DOMContentLoaded", () => {
   const divs = [];
 
   document.addEventListener("keydown", movement);
-
-  function criaAlgomon(nome, vida, atk, tipo) {
-    this.nome = nome;
-    this.vida = vida;
-    this.atk = atk;
-    this.tipo = tipo;
-  }
-
-  function criaPlayer(algm, Pname, algdex, insg) {
-    this.algm = new criaAlgomon();
-    this.Pname = Pname;
-    this.algdex = algdex;
-    this.insg = insg;
-  }
 
   function criaMapa() {
     for (let i = 0; i < layout.length; i++) {
@@ -53,68 +63,72 @@ document.addEventListener("DOMContentLoaded", () => {
         gId++;
       } else if (layout[i] === 8) {
         divs[i].classList.add("cap");
+        divs[i].id = capId;
+        capId++;
       }
     }
   }
 
   criaMapa();
 
-  divs[playerIndex].classList.add("player");
+  divs[player.Index].classList.add("player");
 
   function movement(e) {
-    divs[playerIndex].classList.remove("player");
+    divs[player.Index].classList.remove("player");
 
     switch (e.key) {
       case "a":
         if (
-          playerIndex % width !== 0 &&
-          !divs[playerIndex - 1].classList.contains("parede")
+          player.Index % width !== 0 &&
+          !divs[player.Index - 1].classList.contains("parede")
         )
-          playerIndex -= 1;
+          player.Index -= 1;
         break;
 
       case "w":
         if (
-          playerIndex - width >= 0 &&
-          !divs[playerIndex - width].classList.contains("parede")
+          player.Index - width >= 0 &&
+          !divs[player.Index - width].classList.contains("parede")
         )
-          playerIndex -= width;
+          player.Index -= width;
         break;
 
       case "d":
         if (
-          playerIndex % width < width - 1 &&
-          !divs[playerIndex + 1].classList.contains("parede")
+          player.Index % width < width - 1 &&
+          !divs[player.Index + 1].classList.contains("parede")
         )
-          playerIndex += 1;
+          player.Index += 1;
         break;
 
       case "s":
         if (
-          playerIndex + width < width * height &&
-          !divs[playerIndex + width].classList.contains("parede")
+          player.Index + width < width * height &&
+          !divs[player.Index + width].classList.contains("parede")
         )
-          playerIndex += width;
+          player.Index += width;
         break;
     }
-    divs[playerIndex].classList.add("player");
+    divs[player.Index].classList.add("player");
+    verifyCity();
   }
 
   criaMapa();
-  
 
-  function verifyCity(){
-    if(divs[playerIndex - 1].classList.contains("cap")
-     || divs[playerIndex + width].classList.contains("cap") 
-     || divs[playerIndex + 1].classList.contains("cap")
-     || divs[playerIndex - width].classList.contains("cap")
-     ){
-      recebeAlgomon();
+  function verifyCity() {
+    if (divs[player.Index].classList.contains("cap")) {
+      divs[player.Index].classList.remove("cap");
+      divs[player.Index].classList.add("visited");
+
+      recebeAlgomon(divs[player.Index].id);
+    }
+    if (divs[player.Index].classList.contains("ginasio")) {
+      batalha(divs[player.Index].id);
     }
   }
-  
-  function recebeAlgomon(){
-    
-  }
 
+  function recebeAlgomon(id) {
+    player.algdex++;
+    algcont.textContent = player.algdex;
+  }
 });
