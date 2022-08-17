@@ -36,3 +36,13 @@
 .visited{
   background-color: blue;
 }
+.info__alunos{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+h6{
+  margin: 2px;
+  font-style: italic;
+}
