@@ -22,7 +22,8 @@ body{
   flex-wrap: wrap;
   width: 1160px;
   height: 380px;
-  border: solid black;
+  border: solid #B5C2B7;
+  border-radius: 10px;
 }
 
 .grid div {
@@ -32,6 +33,7 @@ body{
 
 .player{
   background-color: red;
+  border-radius: 2px;
 }
 
 .parede{
@@ -40,6 +42,7 @@ body{
 
 .ginasio{
   background-color: yellow;
+  border-radius: 2px;
 }
 
 .cap{
