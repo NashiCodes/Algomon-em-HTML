@@ -35,29 +35,29 @@ let player = new criaPlayer();
 player.Index = 422;
 player.algdex = 3;
 
-player.algm[0].nome = "Ifssauro";
-player.algm[0].atk = 5;
-player.algm[0].vida = 20;
-player.algm[0].tipo = "C";
-console.log(
-  player.algm[0].nome,
-  player.algm[0].atk,
-  player.algm[0].vida,
-  player.algm[0].tipo
-);
+// player.algm[0].nome = "Ifssauro";
+// player.algm[0].atk = 5;
+// player.algm[0].vida = 20;
+// player.algm[0].tipo = "C";
+// console.log(
+//   player.algm[0].nome,
+//   player.algm[0].atk,
+//   player.algm[0].vida,
+//   player.algm[0].tipo
+// );
 
 
 
-player.algm[1].push.nome = "Whiledle";
-player.algm[1].atk = 3;
-player.algm[1].vida = 40;
-player.algm[1].tipo = "R";
-console.log(
-  player.algm[1].nome,
-  player.algm[1].atk,
-  player.algm[1].vida,
-  player.algm[1].tipo
-);
+// player.algm[1].push.nome = "Whiledle";
+// player.algm[1].atk = 3;
+// player.algm[1].vida = 40;
+// player.algm[1].tipo = "R";
+// console.log(
+//   player.algm[1].nome,
+//   player.algm[1].atk,
+//   player.algm[1].vida,
+//   player.algm[1].tipo
+// );
 
 // player.algm[2].nome = "vectray";
 // player.algm[2].atk = 4;
